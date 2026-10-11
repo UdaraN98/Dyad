@@ -28,23 +28,8 @@ the way people do (fast intuition, slow deliberation):
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  A[Message] --> B[Ingest + tokenize PHI]
-  B --> C[System 1: typed decision + confidence]
-  C --> D{Router}
-  D -->|confident| E[(DynamoDB: OLTP)]
-  D -->|uncertain| F[Step Functions]
-  F --> G[Agents on Bedrock + policy gate]
-  G --> H[Clinician approval]
-  H --> E
-  E -->|DynamoDB Streams| I[(S3 + Iceberg: OLAP)]
-  I --> J[Monitors: drift, calibration, under-triage]
-  J -->|safety breach| K[Circuit breaker widens grey zone]
-  K --> D
-```
+![Dyad architecture: fast path, slow path, lakehouse and monitoring](images/architecture.png)
 
-The full diagram is in `docs/architecture.drawio`.
 
 | Concern | Choice |
 |---|---|

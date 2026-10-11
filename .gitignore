@@ -1,0 +1,50 @@
+# --- Python / uv ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Lambda packaging output ---
+/build/
+*.zip
+
+# --- AWS CDK / Node ---
+cdk.out/
+node_modules/
+.cdk.staging/
+
+# --- Secrets and environment (never commit) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials
+.aws/
+*.tfvars
+
+# --- Local emulator (Floci) ---
+.floci-data/
+
+# --- Generated and local data (synthetic data is generated, not stored) ---
+/data/
+*.parquet
+!tests/**/*.parquet
+athena-results/
+
+# --- Claude Code: personal files only ---
+.claude/settings.local.json
+CLAUDE.local.md
+
+# --- Editors and OS ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
